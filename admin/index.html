@@ -1,7 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/decap-cms@3.1.10/dist/decap-cms.js"></script>
 </head>
-<body></body>
+
+<body>
+<script>
+window.CMS_MANUAL_INIT = true;
+
+const config = {
+  backend: {
+    name: "git-gateway",
+    branch: "main"
+  },
+  media_folder: "images/uploads",
+  public_folder: "/images/uploads",
+  collections: [
+    {
+      name: "blog",
+      label: "Articles",
+      folder: "blog",
+      create: true,
+      slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+      fields: [
+        { label: "Titre", name: "title", widget: "string" },
+        { label: "Date", name: "date", widget: "datetime" },
+        { label: "Pays", name: "country", widget: "string" },
+        { label: "Image", name: "image", widget: "image" },
+        { label: "Contenu", name: "body", widget: "markdown" }
+      ]
+    }
+  ]
+};
+
+CMS.init({ config });
+</script>
+</body>
 </html>
