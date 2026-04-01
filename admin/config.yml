@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: yvan/erasmus-lpm
+  repo: ydepondtlp/erasmus-lpm
   branch: main
 
 media_folder: "images/uploads"
